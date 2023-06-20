@@ -39,6 +39,8 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/product.php'));
             Route::prefix('api')
                 ->group(base_path('routes/cartItem.php'));
+            Route::prefix('api')
+                ->group(base_path('routes/orderDetails.php'));
         });
     }
 }
