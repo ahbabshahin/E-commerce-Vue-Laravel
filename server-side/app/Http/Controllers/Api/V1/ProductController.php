@@ -24,9 +24,7 @@ class ProductController extends Controller
 
         // $query = Product::query()->where('title', 'like', "%{$search}%")->orderBy($sortField, $sortDirection)->paginate($perPage);
 
-        $query = Product::all();
-
-        return new ProductCollection($query);
+        return new ProductCollection(Product::all());
     }
 
     public function store(StoreProductRequest $request, $id)
@@ -62,10 +60,10 @@ class ProductController extends Controller
         return response()->json('Product Updated');
     }
 
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        $product->delete();
+        Product::query()->where('id', $id)->delete();
 
-        return response()->json('Skill deleted');
+        return response()->json('Product deleted');
     }
 }
